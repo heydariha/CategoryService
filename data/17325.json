@@ -1,0 +1,62 @@
+{
+    "name": "Clothes",
+    "id": 17325,
+    "products": {
+        "1": {
+            "name": "Shorts 'Ashley'",
+            "description": "Shorts mit strukturiertem gesticken Muster von Edited the Label",
+            "variants": {
+                "101": {
+                    "isDefault": true,
+                    "isAvailable": true,
+                    "size": "34",
+                    "price": {
+                        "current": 5990,
+                        "old": null,
+                        "isSale": false
+                    },
+                    "quantity": 10
+                },
+                "102": {
+                    "isDefault": false,
+                    "isAvailable": false,
+                    "size": "36",
+                    "price": {
+                        "current": 5290,
+                        "old": 5990,
+                        "isSale": true
+                    },
+                    "quantity": 0
+                }
+            }
+        },
+        "2": {
+            "name": "Pullover 'Eda'",
+            "description": "Pullover from EDITED the label",
+            "variants": {
+                "201": {
+                    "isDefault": false,
+                    "isAvailable": true,
+                    "size": "S",
+                    "price": {
+                        "current": 3990,
+                        "old": 7990,
+                        "isSale": true
+                    },
+                    "quantity": 6
+                },
+                "202": {
+                    "isDefault": true,
+                    "isAvailable": true,
+                    "size": "M",
+                    "price": {
+                        "current": 7990,
+                        "old": null,
+                        "isSale": false
+                    },
+                    "quantity": 2
+                }
+            }
+        }
+    }
+}
