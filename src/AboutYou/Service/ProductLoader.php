@@ -19,7 +19,14 @@ class ProductLoader implements CategoryServiceInterface
         $jsonArr=json_decode($string,true);
         if($jsonArr['id'] != $categoryId)
             return array();
-        return $this->loadProducts($jsonArr);
+
+        $obj            = new \AboutYou\Entity\Category;
+        $obj->id        = $jsonArr['id'];
+        $obj->name      = $jsonArr['name'];
+        $validate       = new SetValidator(new validateCategory());
+        $validate->validate($obj);
+        $obj->products  = $this->loadProducts($jsonArr);
+        return $obj->products;
     }
 
     /**
@@ -37,6 +44,8 @@ class ProductLoader implements CategoryServiceInterface
             $obj->name   = $val['name'];
             $obj->description   = $val['description'];
             $obj->variants   = $this->loadVariavnts($val['variants'],$obj);
+            $validate       = new SetValidator(new validateProduct());
+            $validate->validate($obj);
             $result[]   = $obj;
         }
         return $result;
@@ -49,10 +58,12 @@ class ProductLoader implements CategoryServiceInterface
         {
             $obj             = new \AboutYou\Entity\Variant;
             $obj->id         = $index;
-            $obj->isDefault  = $val['isDefault'];
-            $obj->isAvailable = $val['isAvailable'];
+            $obj->isDefault  = $val['isDefault']?true:false;
+            $obj->isAvailable = $val['isAvailable']?true:false;
             $obj->quantity   = $val['quantity'];
             $obj->size       = $val['size'];
+            $validate       = new SetValidator(new validateVariant());
+            $validate->validate($obj);
             $obj->price      = $this->loadPrice($val['price'],$obj);
             $obj->product    = $productObj;
             $result[]        = $obj;
@@ -65,9 +76,24 @@ class ProductLoader implements CategoryServiceInterface
         $obj             = new \AboutYou\Entity\Price;
         $obj->current    = $priceArr['current'];
         $obj->old        = $priceArr['old'];
-        $obj->isSale     = $priceArr['isSale'];
+        $obj->isSale     = $priceArr['isSale']?true:false;
+        $validate       = new SetValidator(new validatePrice());
+        $validate->validate($obj);
         $obj->variant    = $variantObj;
         return $obj;
     }
 
+}
+
+class SetValidator{
+    private $validator;
+    public function __construct(ValidationServiceInterface $validator)
+    {
+        $this->validator = $validator;
+    }
+
+    public function validate($obj)
+    {
+        $this->validator->validateEntity($obj);
+    }
 }

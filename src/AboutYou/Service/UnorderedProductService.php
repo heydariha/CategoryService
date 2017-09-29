@@ -45,7 +45,7 @@ class UnorderedProductService implements ProductServiceInterface
         // $productResults = $this->productService->getProductsForCategory($categoryId);
         $productResults = $this->categoryService->getProducts($categoryId);
         $productResults = $this->makeSortProducts($productResults,"description");
-        
+// echo "<pre>";print_r($productResults);exit;
     }
 
     public function makeSortProducts(array $productsArr,$key)
