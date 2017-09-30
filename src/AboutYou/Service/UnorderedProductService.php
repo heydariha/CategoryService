@@ -48,6 +48,12 @@ class UnorderedProductService implements ProductServiceInterface
         return $productResults;
     }
 
+    /**
+    *   @param  array $productsArr
+    *   @param string $key
+    *
+    *   @return products[]
+    **/
     public function makeSortProducts(array $productsArr,$key)
     {
         usort($productsArr, function($productA, $productB) use ($key) {
@@ -58,4 +64,16 @@ class UnorderedProductService implements ProductServiceInterface
         });
         return $productsArr;
     }
+
+    public function SizeOrderedProductService(array $productsArr,$key)
+    {
+        usort($productsArr, function($productA, $productB) use ($key) {
+            if ($productA->$key == $productB->$key) {
+                return 0;
+            }
+            return ($productA->$key < $productB->$key) ? -1 : 1;
+        });
+        return $productsArr;
+    }
+
 }
