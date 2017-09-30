@@ -44,7 +44,7 @@ class UnorderedProductService implements ProductServiceInterface
         $categoryId = $this->categoryNameToIdMapping[$categoryName];
         // $productResults = $this->productService->getProductsForCategory($categoryId);
         $productResults = $this->categoryService->getProducts($categoryId);
-        $productResults = $this->makeSortProducts($productResults,"description");
+        $productResults = $this->SizeOrderedProductService($productResults);
         return $productResults;
     }
 
@@ -65,13 +65,20 @@ class UnorderedProductService implements ProductServiceInterface
         return $productsArr;
     }
 
-    public function SizeOrderedProductService(array $productsArr,$key)
+    /**
+    *   @param  array $productsArr
+    *   @return products[]
+    **/
+    public function SizeOrderedProductService(array $productsArr)
     {
-        usort($productsArr, function($productA, $productB) use ($key) {
-            if ($productA->$key == $productB->$key) {
+        usort($productsArr, function($productA, $productB) {
+/*
+* We can implement whatever algorithm in order to sort prices
+*/
+            if ($productA->variants[0]->price->current == $productB->variants[0]->price->current) {
                 return 0;
             }
-            return ($productA->$key < $productB->$key) ? -1 : 1;
+            return ($productA->variants[0]->price->current < $productB->variants[0]->price->current) ? -1 : 1;
         });
         return $productsArr;
     }
