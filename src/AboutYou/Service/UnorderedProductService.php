@@ -48,7 +48,7 @@ class UnorderedProductService implements ProductServiceInterface
         return $productResults;
     }
 
-        /**
+    /**
     *   @param  array $productsArr
     *   @param string $key
     *
