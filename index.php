@@ -7,7 +7,7 @@ use AboutYou\Service\validateProduct;
 use AboutYou\Service\ProductServiceInterface;
 use AboutYou\Service\UnorderedProductService;
 
-
-$obj    = new UnorderedProductService(new ProductLoader);
-$result = $obj->getProductsForCategory('Clothes');
+$ProductService     = new UnorderedProductService(new ProductLoader);
+$obj                = new \AboutYou\Service\ProductInjection($ProductService);
+$result = $obj->product->getProductsForCategory('Clothes');
 // echo "<pre>";print_r($result);exit;

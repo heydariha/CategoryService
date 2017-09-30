@@ -59,3 +59,13 @@ class UnorderedProductService implements ProductServiceInterface
         return $productsArr;
     }
 }
+
+class ProductInjection
+{
+    public $product;
+
+    public function __construct(UnorderedProductService $ProductService)
+    {
+        $this->product = $ProductService;
+    }
+}
