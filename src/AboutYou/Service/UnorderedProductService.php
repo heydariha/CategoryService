@@ -48,6 +48,12 @@ class UnorderedProductService implements ProductServiceInterface
         
     }
 
+    /**
+    *   @param  array $productsArr
+    *   @param string $key
+    *
+    *   @return products[]
+    **/
     public function makeSortProducts(array $productsArr,$key)
     {
         usort($productsArr, function($productA, $productB) use ($key) {
