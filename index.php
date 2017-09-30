@@ -8,7 +8,14 @@ use AboutYou\Service\ProductServiceInterface;
 use AboutYou\Service\UnorderedProductService;
 
 
-$obj    = new UnorderedProductService(new ProductLoader);
+
+class ProductFactory{
+    public static function create()
+    {
+        return new UnorderedProductService(new ProductLoader);
+    }
+}
+
+$obj    = ProductFactory::create();
 $result = $obj->getProductsForCategory('Clothes');
-print_r($result);
-exit;
+// echo "<pre>";print_r($result);exit;
