@@ -47,7 +47,12 @@ class UnorderedProductService implements ProductServiceInterface
         $productResults = $this->makeSortProducts($productResults,"description");
         return $productResults;
     }
-
+    /**
+    *   @param  array $productsArr
+    *   @param string $key
+    *
+    *   @return products[]
+    **/
     public function makeSortProducts(array $productsArr,$key)
     {
         usort($productsArr, function($productA, $productB) use ($key) {
@@ -60,6 +65,9 @@ class UnorderedProductService implements ProductServiceInterface
     }
 }
 
+/**
+*This class is made for Dependency Injection implementation
+**/
 class ProductInjection
 {
     public $product;
