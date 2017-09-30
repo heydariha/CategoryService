@@ -46,7 +46,6 @@ class UnorderedProductService implements ProductServiceInterface
         $productResults = $this->categoryService->getProducts($categoryId);
         $productResults = $this->makeSortProducts($productResults,"description");
         return $productResults;
-// echo "<pre>";print_r($productResults);exit;
     }
 
     public function makeSortProducts(array $productsArr,$key)
@@ -58,5 +57,12 @@ class UnorderedProductService implements ProductServiceInterface
             return ($productA->$key < $productB->$key) ? -1 : 1;
         });
         return $productsArr;
+    }
+}
+
+class ProductFactory{
+    public static function create()
+    {
+        return new UnorderedProductService(new ProductLoader);
     }
 }

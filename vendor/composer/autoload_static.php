@@ -83,6 +83,7 @@ class ComposerStaticInit87348616c20b869ed52bf7022886a232
         'AboutYou\\Entity\\Product' => __DIR__ . '/../..' . '/src/AboutYou/Entity/Product.php',
         'AboutYou\\Entity\\Variant' => __DIR__ . '/../..' . '/src/AboutYou/Entity/Variant.php',
         'AboutYou\\Service\\CategoryServiceInterface' => __DIR__ . '/../..' . '/src/AboutYou/Service/CategoryServiceInterface.php',
+        'AboutYou\\Service\\ProductFactory' => __DIR__ . '/../..' . '/src/AboutYou/Service/UnorderedProductService.php',
         'AboutYou\\Service\\ProductLoader' => __DIR__ . '/../..' . '/src/AboutYou/Service/ProductLoader.php',
         'AboutYou\\Service\\ProductServiceInterface' => __DIR__ . '/../..' . '/src/AboutYou/Service/ProductServiceInterface.php',
         'AboutYou\\Service\\SetValidator' => __DIR__ . '/../..' . '/src/AboutYou/Service/ProductLoader.php',

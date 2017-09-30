@@ -11,6 +11,7 @@ return array(
     'AboutYou\\Entity\\Product' => $baseDir . '/src/AboutYou/Entity/Product.php',
     'AboutYou\\Entity\\Variant' => $baseDir . '/src/AboutYou/Entity/Variant.php',
     'AboutYou\\Service\\CategoryServiceInterface' => $baseDir . '/src/AboutYou/Service/CategoryServiceInterface.php',
+    'AboutYou\\Service\\ProductFactory' => $baseDir . '/src/AboutYou/Service/UnorderedProductService.php',
     'AboutYou\\Service\\ProductLoader' => $baseDir . '/src/AboutYou/Service/ProductLoader.php',
     'AboutYou\\Service\\ProductServiceInterface' => $baseDir . '/src/AboutYou/Service/ProductServiceInterface.php',
     'AboutYou\\Service\\SetValidator' => $baseDir . '/src/AboutYou/Service/ProductLoader.php',
