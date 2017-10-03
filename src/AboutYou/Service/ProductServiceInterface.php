@@ -24,6 +24,6 @@ interface ProductServiceInterface
      */
     public function getProductsForCategory($categoryName);
     public function makeSortProducts(array $productsArr,$key);
-    public function SizeOrderedProductService(array $productsArr);
+    public function PriceOrderedProductService(array $productsArr);
 }
 
