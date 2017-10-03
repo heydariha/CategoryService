@@ -3,6 +3,12 @@
 
 require __DIR__  . '/../vendor/autoload.php';
 
+use AboutYou\Service\ProductLoader;
+use AboutYou\Service\ProductServiceInterface;
+use AboutYou\Service\UnorderedProductService;
 
 
-// You app initialisation goes here
+$obj    = new UnorderedProductService(new ProductLoader);
+$result = $obj->getProductsForCategory('Clothes');
+
+// echo "<pre>";print_r($result);exit;
