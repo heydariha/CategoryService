@@ -44,7 +44,7 @@ class UnorderedProductService implements ProductServiceInterface
         $categoryId = $this->categoryNameToIdMapping[$categoryName];
         // $productResults = $this->productService->getProductsForCategory($categoryId);
         $productResults = $this->categoryService->getProducts($categoryId);
-        $productResults = $this->makeSortProducts($productResults,"description");
+        $productResults = $this->makeSortProducts($productResults,"name");
         return $productResults;
     }
     /**
@@ -53,13 +53,17 @@ class UnorderedProductService implements ProductServiceInterface
     *
     *   @return products[]
     **/
-    public function makeSortProducts(array $productsArr,$key)
+    public function makeSortProducts(array $productsArr,$key,$sort='ASC')
     {
-        usort($productsArr, function($productA, $productB) use ($key) {
+        usort($productsArr, function($productA, $productB) use ($key,$sort) {
             if ($productA->$key == $productB->$key) {
                 return 0;
             }
-            return ($productA->$key < $productB->$key) ? -1 : 1;
+            if($sort =='ASC')
+                return ($productA->$key < $productB->$key) ? -1 : 1;
+            else
+            if($sort =='DESC')
+                return ($productA->$key < $productB->$key) ? 1 : -1;
         });
         return $productsArr;
     }
